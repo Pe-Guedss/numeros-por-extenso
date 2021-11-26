@@ -1,4 +1,3 @@
-import os
 import tkinter as tk
 
 import tkinter.font as tkFont
@@ -49,22 +48,16 @@ def imprime_um_digito (entrada):
 
 #Função para imprimir números de dois dígitos
 def imprime_dois_digitos (entrada):
-	#Avalia se o algarismo mais significativo é o 1, caso seja, deve executar uma sequência de ações diferentes,
-	#já que o nome por extenso dos números de 10 a 19 não segue o padrão de: nome da dezena + "e" + nome da unidade.
 	if entrada [0] == "1":
 		texto_saida = f"O número digitado foi: \n{dezenas_dez [entrada].capitalize()}"
 		atualiza (texto_saida)
 		return
-	        
-	#Avalia se o último dígito é o número zero, porque, se for, não há necessidade de escrever mais nada além do
-	#nome da dezena. Até por que "vinte e zero" seria muito esquisito ;P
+
 	elif entrada [1] == "0":
 		texto_saida = f"O número digitado foi: \n{dezenas [entrada [0]].capitalize()}"
 		atualiza (texto_saida)
 		return
 
-	#Caso nenhuma das condições anteriores tenha sido satisfeita, isso quer dizer que o número digitado segue o padrão de
-	#escrita por extenso: nome da dezena + "e" + nome da unidade.
 	else:
 		texto_saida = f"O número digitado foi: \n{dezenas [entrada[0]].capitalize()} e {unidades [entrada[1:2]]}"
 		atualiza (texto_saida)
@@ -73,13 +66,11 @@ def imprime_dois_digitos (entrada):
 
 #Função para imprimir números de três dígitos
 def imprime_tres_digitos (entrada):
-	#Como o número 100 também foge dos padrões, é necessário uma condicional específica para ele.
 	if entrada == "100":
 		texto_saida = f"O número digitado foi: \n{centenas [entrada].capitalize()}"
 		atualiza (texto_saida)
 		return
-	        
-	#Avalia se o número é uma centena pura (200, 300, 400, ...)
+
 	elif entrada [1:] == "00":
 		texto_saida = f"O número digitado foi: \n{centenas [entrada[0]].capitalize()}"
 		atualiza (texto_saida)
@@ -89,23 +80,17 @@ def imprime_tres_digitos (entrada):
 		texto_saida = f"O número digitado foi: \n{centenas [entrada[0]].capitalize()} e {dezenas_dez [entrada[1:]]}"
 		atualiza (texto_saida)
 		return
-	            
-	#Avalia se o número tem o algarismo das unidades igual a 0. Caso tenha, não há necessidade de expressar as unidades
-	#no escrito por extenso.
+
 	elif entrada [2] == "0":
 		texto_saida = f"O número digitado foi: \n{centenas [entrada[0]].capitalize()} e {dezenas [entrada[1]]}"
 		atualiza (texto_saida)
 		return
-	            
-	#Avalia se o número tem o algarismo das dezenas igual a 0. Caso tenha, não há necessidade de expressar as dezenas
-	#no escrito por extenso.
+
 	elif entrada [1] == "0":
 		texto_saida = f"O número digitado foi: \n{centenas [entrada[0]].capitalize()} e {unidades [entrada[2]]}"
 		atualiza (texto_saida)
 		return
 
-	#Caso nenhuma das condições anteriores tenha sido satisfeita, isso quer dizer que o número digitado segue o padrão de
-	#escrita por extenso: nome da centena + "e" + nome da dezena + "e" + nome da unidade.
 	else:
 		texto_saida = f"O número digitado foi: \n{centenas [entrada [0]].capitalize()} e {dezenas [entrada[1]]} e {unidades [entrada[2]]}"
 		atualiza (texto_saida)
@@ -128,7 +113,6 @@ def program (event = None):
 		texto_saida = "O número digitado não é válido!"
 		atualiza (texto_saida)
 		return
-	#=*=*=*=*=*=*=*=*=*=*=*=Testando se o número é válido=*=*=*=*=*=*=*=*=*=*=*=
 
 	digitos = len (entrada)
 	    
